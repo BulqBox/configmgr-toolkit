@@ -1,0 +1,21 @@
+Timestamp,MetricCategory,MetricName,MetricValue,MetricUnit,Threshold,Status,Notes
+2025-01-15 10:00:00,Collections,TotalCount,5234,count,W:450/C:500,CRITICAL,Baseline - Pre-remediation
+2025-01-15 10:00:00,Collections,IncrementalCount,312,count,W:180/C:200,CRITICAL,Exceeds Microsoft limit by 112
+2025-01-15 10:00:00,Collections,EmptyCollections,87,count,W:30/C:50,CRITICAL,
+2025-01-15 10:00:00,Collections,UnusedCollections,134,count,W:50/C:100,CRITICAL,
+2025-01-15 10:00:00,Collections,MaxDepth,9,levels,W:5/C:7,CRITICAL,
+2025-01-15 10:00:00,Collections,AvgDepth,3.8,levels,W:2.5/C:3.5,CRITICAL,
+2025-01-15 10:00:00,Performance,AvgEvalTime,187.5,seconds,W:120/C:300,WARNING,
+2025-01-15 10:00:00,Performance,MaxEvalTime,543.2,seconds,W:300/C:600,WARNING,
+2025-01-15 10:00:00,System,SiteServerCPU,78.3,percent,W:75/C:85,WARNING,
+2025-01-15 10:00:00,Deployments,ActiveDeployments,2451,count,W:700/C:800,CRITICAL,
+2025-01-15 11:00:00,Collections,TotalCount,5234,count,W:450/C:500,CRITICAL,
+2025-01-15 11:00:00,Collections,IncrementalCount,312,count,W:180/C:200,CRITICAL,
+2025-01-22 10:00:00,Collections,TotalCount,4876,count,W:450/C:500,CRITICAL,Week 1 - Removed 358 collections
+2025-01-22 10:00:00,Collections,IncrementalCount,287,count,W:180/C:200,CRITICAL,Reduced by 25
+2025-01-29 10:00:00,Collections,TotalCount,4521,count,W:450/C:500,CRITICAL,Week 2 - Ongoing cleanup
+2025-01-29 10:00:00,Collections,IncrementalCount,243,count,W:180/C:200,CRITICAL,Approaching target
+2025-02-05 10:00:00,Collections,TotalCount,3987,count,W:450/C:500,CRITICAL,Week 3 - Major improvements
+2025-02-05 10:00:00,Collections,IncrementalCount,189,count,W:180/C:200,WARNING,Below Microsoft limit
+2025-02-12 10:00:00,Collections,TotalCount,3245,count,W:450/C:500,WARNING,Week 4 - Approaching target
+2025-02-12 10:00:00,Collections,IncrementalCount,167,count,W:180/C:200,OK,Within recommendations

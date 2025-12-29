@@ -1,0 +1,120 @@
+╔════════════════════════════════════════════════════════════════╗
+║        SOLUTION SCCM MONITORING - STRUCTURE COMPLÈTE           ║
+╚════════════════════════════════════════════════════════════════╝
+
+📂 SCCM_Monitoring/
+│
+├── 📄 README.md                    → Documentation complète (11 KB)
+├── 📄 QUICKSTART.md                → Guide démarrage rapide (5 KB)
+├── 📄 DELIVERABLES.md              → Résumé des livrables (9 KB)
+├── 📄 INDEX.txt                    → Ce fichier
+│
+├── 📁 Scripts/                     → Scripts PowerShell
+│   ├── Initialize-Monitoring.ps1  → Setup initial + baseline
+│   ├── Collect-SCCMMetrics.ps1    → Collecte horaire (cœur du système)
+│   └── Export-PowerBIReport.ps1   → Rapports et exports
+│
+├── 📁 Config/                      → Configuration
+│   └── thresholds.json            → Seuils des 23 métriques (modifiable)
+│
+├── 📁 Data/                        → Données
+│   └── EXAMPLE_Metrics.csv        → Exemple de format CSV
+│
+├── 📁 Logs/                        → Logs (vide au départ)
+│   └── Collection_YYYYMMDD.log    → Créés automatiquement
+│
+└── 📁 Reports/                     → Rapports HTML (vide au départ)
+    └── SCCM_Report_*.html         → Générés à la demande
+
+═══════════════════════════════════════════════════════════════
+
+🚀 DÉMARRAGE RAPIDE (3 commandes)
+
+1️⃣  Copier vers C:\
+    Copy-Item -Path "SCCM_Monitoring" -Destination "C:\" -Recurse
+
+2️⃣  Initialiser (remplacer PS1 par votre site code)
+    cd C:\SCCM_Monitoring\Scripts
+    .\Initialize-Monitoring.ps1 -SiteCode "PS1"
+
+3️⃣  Activer la collecte horaire
+    .\Initialize-Monitoring.ps1 -SiteCode "PS1" -SetupScheduledTask
+
+✅ TERMINÉ ! La collecte horaire est maintenant active.
+
+═══════════════════════════════════════════════════════════════
+
+📊 23 MÉTRIQUES SURVEILLÉES
+
+Collections (9)
+  ✓ TotalCount - IncrementalCount - EmptyCollections
+  ✓ UnusedCollections - OrphanedCollections
+  ✓ MaxDepth - AvgDepth - ComplexQueryCount - CircularDependencies
+
+Performance (6)
+  ✓ AvgEvalTime - MaxEvalTime - CollEvalBacklog
+  ✓ SlowCollections - EvalFailures - ConsoleLaunchTime
+
+System (4)
+  ✓ SiteServerCPU - SQLServerCPU
+  ✓ SQLDatabaseSize - ProviderLoad
+
+Deployments (4)
+  ✓ ActiveDeployments - ObsoleteDeployments
+  ✓ AvgSuccessRate - FailedDeployments
+
+═══════════════════════════════════════════════════════════════
+
+📈 FORMAT CSV - IMPORT POWER BI
+
+Timestamp,MetricCategory,MetricName,MetricValue,MetricUnit,Threshold,Status,Notes
+
+Exemple :
+2025-01-15 10:00:00,Collections,TotalCount,5234,count,W:450/C:500,CRITICAL,Baseline
+2025-01-22 10:00:00,Collections,TotalCount,4876,count,W:450/C:500,CRITICAL,Week 1 - Removed 358
+
+➡️ Import direct dans Power BI pour visualisation !
+
+═══════════════════════════════════════════════════════════════
+
+🎯 RÉSULTAT ATTENDU
+
+Baseline T0    : 5,234 collections | 312 incrémentales | 2,451 déploiements
+Après 4 sem    : 3,245 collections | 167 incrémentales | 987 déploiements
+Amélioration   : -38% collections | -46% incrémentales | -60% déploiements
+
+═══════════════════════════════════════════════════════════════
+
+📚 DOCUMENTATION
+
+QUICKSTART.md   → Installation en 10 minutes
+README.md       → Documentation technique complète
+DELIVERABLES.md → Résumé et cas d'usage
+
+═══════════════════════════════════════════════════════════════
+
+✨ FEATURES PRINCIPALES
+
+✅ Collecte horaire automatique (tâche planifiée)
+✅ 23 métriques SCCM surveillées
+✅ Seuils configurables (JSON)
+✅ Statuts automatiques (OK/WARNING/CRITICAL)
+✅ Export Power BI direct (CSV)
+✅ Rapports HTML interactifs
+✅ Démonstration ROI vs baseline
+✅ Logs détaillés
+✅ Documentation complète
+
+═══════════════════════════════════════════════════════════════
+
+📞 SUPPORT
+
+Logs          : C:\SCCM_Monitoring\Logs\
+Dépannage     : Voir README.md section "Dépannage"
+Tâche planif. : Get-ScheduledTask -TaskName "SCCM-Monitoring-Hourly"
+
+═══════════════════════════════════════════════════════════════
+
+🎉 Prêt à l'emploi ! Consultez QUICKSTART.md pour commencer.
+
+Version 1.0 | Janvier 2025

@@ -1,0 +1,206 @@
+{
+  "version": "1.0",
+  "lastUpdated": "2025-01-15",
+  "description": "Configuration des seuils pour le monitoring SCCM - Ajustable selon contexte",
+  "thresholds": {
+    "Collections": {
+      "TotalCount": {
+        "warning": 450,
+        "critical": 500,
+        "target": 300,
+        "unit": "count",
+        "source": "Community best practice (2-3 collections per 100 clients)",
+        "description": "Nombre total de collections dans l'environnement"
+      },
+      "IncrementalCount": {
+        "warning": 180,
+        "critical": 200,
+        "target": 150,
+        "unit": "count",
+        "source": "Microsoft hard limit",
+        "description": "Collections avec rafraîchissement incrémental (limite technique Microsoft)"
+      },
+      "EmptyCollections": {
+        "warning": 30,
+        "critical": 50,
+        "target": 10,
+        "unit": "count",
+        "source": "Operational efficiency",
+        "description": "Collections sans membres depuis plus de 30 jours"
+      },
+      "UnusedCollections": {
+        "warning": 50,
+        "critical": 100,
+        "target": 20,
+        "unit": "count",
+        "source": "Best practice",
+        "description": "Collections sans déploiements et sans utilisation comme limitante"
+      },
+      "OrphanedCollections": {
+        "warning": 20,
+        "critical": 40,
+        "target": 5,
+        "unit": "count",
+        "source": "Governance",
+        "description": "Collections isolées sans relation avec d'autres collections"
+      },
+      "MaxDepth": {
+        "warning": 5,
+        "critical": 7,
+        "target": 4,
+        "unit": "levels",
+        "source": "Microsoft recommendation",
+        "description": "Profondeur maximale de l'arborescence des collections"
+      },
+      "AvgDepth": {
+        "warning": 2.5,
+        "critical": 3.5,
+        "target": 2.0,
+        "unit": "levels",
+        "source": "Performance optimization",
+        "description": "Profondeur moyenne de l'arborescence"
+      },
+      "ComplexQueryCount": {
+        "warning": 30,
+        "critical": 50,
+        "target": 15,
+        "unit": "count",
+        "source": "Performance impact",
+        "description": "Collections avec requêtes WQL complexes (JOIN multiples)"
+      },
+      "CircularDependencies": {
+        "warning": 1,
+        "critical": 5,
+        "target": 0,
+        "unit": "count",
+        "source": "Critical issue",
+        "description": "Dépendances circulaires détectées (bloque évaluations)"
+      }
+    },
+    "Performance": {
+      "AvgEvalTime": {
+        "warning": 120,
+        "critical": 300,
+        "target": 60,
+        "unit": "seconds",
+        "source": "Performance baseline",
+        "description": "Temps moyen d'évaluation des collections"
+      },
+      "MaxEvalTime": {
+        "warning": 300,
+        "critical": 600,
+        "target": 180,
+        "unit": "seconds",
+        "source": "Performance threshold",
+        "description": "Temps maximum d'évaluation d'une collection"
+      },
+      "CollEvalBacklog": {
+        "warning": 50,
+        "critical": 100,
+        "target": 20,
+        "unit": "count",
+        "source": "Queue monitoring",
+        "description": "Nombre de collections en attente d'évaluation"
+      },
+      "SlowCollections": {
+        "warning": 10,
+        "critical": 20,
+        "target": 5,
+        "unit": "count",
+        "source": "Performance impact",
+        "description": "Collections avec évaluation > 300 secondes"
+      },
+      "EvalFailures": {
+        "warning": 5,
+        "critical": 15,
+        "target": 0,
+        "unit": "count",
+        "source": "Reliability",
+        "description": "Échecs d'évaluation dans les dernières 24h"
+      },
+      "ConsoleLaunchTime": {
+        "warning": 5,
+        "critical": 10,
+        "target": 3,
+        "unit": "seconds",
+        "source": "User experience",
+        "description": "Temps de chargement de la console SCCM"
+      }
+    },
+    "System": {
+      "SiteServerCPU": {
+        "warning": 75,
+        "critical": 85,
+        "target": 60,
+        "unit": "percent",
+        "source": "System health",
+        "description": "Utilisation CPU moyenne du serveur de site"
+      },
+      "SQLServerCPU": {
+        "warning": 75,
+        "critical": 85,
+        "target": 60,
+        "unit": "percent",
+        "source": "System health",
+        "description": "Utilisation CPU moyenne du serveur SQL"
+      },
+      "SQLDatabaseSize": {
+        "warning": 100,
+        "critical": 150,
+        "target": 80,
+        "unit": "GB",
+        "source": "Capacity planning",
+        "description": "Taille de la base de données SCCM"
+      },
+      "ProviderLoad": {
+        "warning": 1000,
+        "critical": 2000,
+        "target": 500,
+        "unit": "requests/hour",
+        "source": "Provider performance",
+        "description": "Charge du SMS Provider"
+      }
+    },
+    "Deployments": {
+      "ActiveDeployments": {
+        "warning": 700,
+        "critical": 800,
+        "target": 400,
+        "unit": "count",
+        "source": "Management complexity",
+        "description": "Nombre de déploiements actifs"
+      },
+      "ObsoleteDeployments": {
+        "warning": 100,
+        "critical": 200,
+        "target": 30,
+        "unit": "count",
+        "source": "Cleanup needed",
+        "description": "Déploiements de plus d'un an sans activité"
+      },
+      "AvgSuccessRate": {
+        "warning": 95,
+        "critical": 90,
+        "target": 98,
+        "unit": "percent",
+        "source": "Deployment quality",
+        "description": "Taux de succès moyen des déploiements",
+        "inverseLogic": true
+      },
+      "FailedDeployments": {
+        "warning": 10,
+        "critical": 20,
+        "target": 5,
+        "unit": "count",
+        "source": "Reliability",
+        "description": "Déploiements avec taux d'échec > 20%"
+      }
+    }
+  },
+  "notes": {
+    "inverseLogic": "Pour AvgSuccessRate, WARNING si < seuil warning (car plus bas = moins bon)",
+    "adjustment": "Ajuster les seuils selon le contexte : infrastructure, nombre de clients, ressources disponibles",
+    "baseline": "Capturer une baseline initiale avant remédiation pour comparaison",
+    "frequency": "Collecte horaire recommandée pour observer les patterns de charge"
+  }
+}
