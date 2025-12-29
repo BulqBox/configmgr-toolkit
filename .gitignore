@@ -1,0 +1,55 @@
+# Fichiers de configuration avec credentials
+config.ps1
+*secrets*
+*.credentials
+*.config.local.ps1
+
+# Logs et résultats
+*.log
+*.csv
+*.txt
+logs/
+output/
+results/
+
+# Fichiers temporaires
+*.tmp
+*.bak
+*~
+Thumbs.db
+Desktop.ini
+
+# PowerShell
+.ps_history
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+
+# Fichiers de test locaux
+sandbox/
+test-data/
+temp/
+
+# Données sensibles
+*password*
+*credential*
+*secret*
+
+# Exports et sauvegardes
+*.old
+*.backup
+exports/
+
+# Fichiers générés par SCCM
+*.mof
+*.mof.unencrypted
+
+# Fichiers système Windows
+$RECYCLE.BIN/
+ehthumbs.db
